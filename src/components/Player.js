@@ -11,8 +11,10 @@ const Player = ({
   isPlaying,
   setIsPlaying,
   currentSong,
+  setCurrentSong,
   audioRef,
   songInfo,
+  songs,
   setSongInfo,
 }) => {
   const playPauseSongHandler = () => {
@@ -22,7 +24,7 @@ const Player = ({
   };
 
   const getTimeFormat = (time) => {
-    if(!time) return "0:00"
+    if (!time) return "0:00";
     return (
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
     );
@@ -32,6 +34,21 @@ const Player = ({
     let current = e.target.value;
     setSongInfo({ ...songInfo, currentTime: current });
     audioRef.current.currentTime = current;
+  };
+
+  const skipSongHandler = (direction) => {
+    let currentSongIndex = songs.findIndex(
+      (song) => song.id === currentSong.id
+    );
+    if (direction === "skip-forward")
+      setCurrentSong(songs[currentSongIndex + 1]);
+    else setCurrentSong(songs[currentSongIndex - 1]);
+    
+    //check if song is isPlaying
+    if (isPlaying) {
+      let playPromise = audioRef.current.play();
+      if (playPromise) playPromise.then((audio) => audioRef.current.play());
+    }
   };
 
   return (
@@ -48,7 +65,12 @@ const Player = ({
         <p>{getTimeFormat(songInfo.duration)}</p>
       </div>
       <div className="play-pause-control">
-        <FontAwesomeIcon className="skip-back" icon={faAngleLeft} size="2x" />
+        <FontAwesomeIcon
+          className="skip-back"
+          icon={faAngleLeft}
+          size="2x"
+          onClick={() => skipSongHandler("skip-back")}
+        />
         <FontAwesomeIcon
           className="play"
           icon={isPlaying ? faPause : faPlay}
@@ -59,6 +81,7 @@ const Player = ({
           className="skip-through"
           icon={faAngleRight}
           size="2x"
+          onClick={() => skipSongHandler("skip-forward")}
         />
       </div>
     </div>
