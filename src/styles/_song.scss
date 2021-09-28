@@ -18,3 +18,19 @@
         font-size: 1rem;
     }
 }
+
+@media screen and (max-width: 800px) {
+    .song-container {
+        img {
+            width: 40%;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .song-container {
+        img {
+            width: 60%;
+        }
+    }
+}

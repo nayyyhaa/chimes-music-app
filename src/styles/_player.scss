@@ -29,3 +29,11 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .player-container {
+    .time-slider-control {
+        width: 70%;
+    }
+}
+}
