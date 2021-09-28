@@ -15,6 +15,7 @@ function App() {
   let [songInfo, setSongInfo] = useState({
     currentTime: 0,
     duration: 0,
+    animationPercentage: 0,
   });
 
   let audioRef = useRef(null);
@@ -22,7 +23,16 @@ function App() {
   const timeUpdateHandler = (e) => {
     let current = e.target.currentTime;
     let duration = e.target.duration;
-    setSongInfo({ ...songInfo, currentTime: current, duration });
+    let animationPercentage = Math.round(
+      (Math.round(current) * 100) / Math.round(duration)
+    );
+    
+    setSongInfo({
+      ...songInfo,
+      currentTime: current,
+      duration,
+      animationPercentage,
+    });
   };
 
   return (

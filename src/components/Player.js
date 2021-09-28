@@ -19,6 +19,10 @@ const Player = ({
   setSongInfo,
   setSongs,
 }) => {
+  /*track animation style*/
+  const trackAnimationStyle = {
+    transform: `translateX(${songInfo.animationPercentage}%)`,
+  };
   /*change lib active*/
   useEffect(() => {
     const currentSongActive = songs.map((el) => {
@@ -67,13 +71,19 @@ const Player = ({
     <div className="player-container">
       <div className="time-slider-control">
         <p>{getTimeFormat(songInfo.currentTime)}</p>
-        <input
-          min={0}
-          max={songInfo.duration || 0}
-          value={songInfo.currentTime}
-          onChange={dragRangeHandler}
-          type="range"
-        />
+        <div className="track">
+          <input
+            style={{
+              background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})`,
+            }}
+            min={0}
+            max={songInfo.duration || 0}
+            value={songInfo.currentTime}
+            onChange={dragRangeHandler}
+            type="range"
+          />
+          <div style={trackAnimationStyle} className="animate-track"></div>
+        </div>
         <p>{getTimeFormat(songInfo.duration)}</p>
       </div>
       <div className="play-pause-control">

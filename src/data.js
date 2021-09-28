@@ -9,7 +9,7 @@ const songData = () => {
         "https://chillhop.com/wp-content/uploads/2021/07/3b73a510169f14c4af83ac4016e809917412702b-1024x1024.jpg",
       artist: "fantompower",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=22792",
-      color: ["#C8DBE1", "#CD99C9"],
+      color: ["#CD99C9", "#C8DBE1"],
       active: true,
     },
     {

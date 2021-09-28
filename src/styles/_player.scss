@@ -14,8 +14,44 @@
             cursor: pointer;
         }
 
+        .track {
+            width: 100%;
+            cursor: pointer;
+            position: relative;
+            height: 0.5rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            align-self: center;
+
+            input[type="range"] {
+                background: rgb(155, 127, 255);
+                -webkit-appearance: none;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    height: 20px;
+                    width: 16px;
+                }
+            }
+
+            .animate-track {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top:0;
+                left: 0;
+                background: rgb(216, 215, 215);
+                transform: translateX(0%);
+                pointer-events: none;
+            }
+        }
+
         p {
-            padding: 1rem;
+            padding: 0 1rem;
         }
     }
 
@@ -30,10 +66,24 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
     .player-container {
-    .time-slider-control {
-        width: 70%;
+        .time-slider-control {
+            width: 80%;
+        }
+        .play-pause-control {
+            width: 40%;
+        }
     }
 }
+
+@media screen and (max-width: 600px) {
+    .player-container {
+        .time-slider-control {
+            width: 100%;
+        }
+        .play-pause-control {
+            width: 50%;
+        }
+    }
 }
