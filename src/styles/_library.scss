@@ -51,6 +51,7 @@
         padding: 0.75rem 2rem;
         margin: 0.25rem 0;
         cursor: pointer;
+        transition: all 0.5s ease;
 
         h3 {
             font-size: 1rem;
@@ -82,4 +83,10 @@
 .active-library {
     transform: translateX(0%);
     opacity: 1;
+}
+
+@media screen and (max-width: 630px) {
+    .library-container {
+        width: 100%;
+    }
 }
