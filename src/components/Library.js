@@ -1,10 +1,28 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import LibrarySong from "./LibrarySong";
 
-const Library = ({ songs, setCurrentSong, audioRef, isPlaying, setSongs }) => {
+const Library = ({
+  songs,
+  setCurrentSong,
+  audioRef,
+  isPlaying,
+  setSongs,
+  isLibraryActive,
+  setLibraryActive,
+}) => {
   return (
-    <div className="library-container">
-      <h2>Library</h2>
+    <div
+      className={`library-container ${isLibraryActive ? "active-library" : ""}`}
+    >
+      <div className="library-nav">
+        <h2>Library</h2>
+        <FontAwesomeIcon
+          icon={faTimes}
+          onClick={() => setLibraryActive(!isLibraryActive)}
+        />
+      </div>
       <div className="library-songs">
         {songs.map((song) => (
           <LibrarySong

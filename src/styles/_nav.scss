@@ -1,0 +1,25 @@
+nav {
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .title-text {
+        font-family: 'Pacifico',
+            cursive;
+        padding: 1rem 0;
+    }
+
+    button {
+        background: transparent;
+        border: 2px solid rgb(75, 74, 74);
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: rgba(75, 74, 74);
+            color: white;
+        }
+    }
+}

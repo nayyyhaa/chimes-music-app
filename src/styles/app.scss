@@ -17,13 +17,7 @@ h4, h5 {
     font-weight: 400;
 }
 
-.title-text {
-    font-family: 'Pacifico',
-    cursive;
-    text-align: center;
-    padding: 1rem 0;
-}
-
 @import "./song";
 @import "./player";
 @import "./library";
+@import "./nav"

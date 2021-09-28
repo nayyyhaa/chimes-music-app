@@ -17,10 +17,6 @@
     border: transparent;
 }
 
-.active {
-    background: rgb(178, 150, 255);
-}
-
 .library-container {
     position: fixed;
     top: 0;
@@ -30,9 +26,22 @@
     background-color: rgb(226, 218, 252);
     box-shadow: 2px 2px 50px rgb(168, 168, 168);
     overflow-y: scroll;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all 0.5s ease;
 
-    h2 {
-        padding: 2rem;
+    svg {
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+
+    .library-nav {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 0;
+        margin: auto;
     }
 
     .library-song-container {
@@ -64,4 +73,13 @@
             padding-left: 1rem;
         }
     }
+}
+
+.active {
+    background: rgb(178, 150, 255);
+}
+
+.active-library {
+    transform: translateX(0%);
+    opacity: 1;
 }
