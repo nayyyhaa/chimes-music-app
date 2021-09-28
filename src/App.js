@@ -5,7 +5,7 @@ import Player from "./components/Player";
 import Library from "./components/Library";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import data from "./util";
+import data from "./data";
 
 function App() {
   let [songs, setSongs] = useState(data());

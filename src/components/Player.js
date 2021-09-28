@@ -6,6 +6,7 @@ import {
   faAngleLeft,
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { playAudio } from "../util";
 
 const Player = ({
   isPlaying,
@@ -59,10 +60,7 @@ const Player = ({
     }
 
     //check if song is isPlaying
-    if (isPlaying) {
-      let playPromise = audioRef.current.play();
-      if (playPromise) playPromise.then((audio) => audioRef.current.play());
-    }
+    playAudio(isPlaying, audioRef);
   };
 
   return (
