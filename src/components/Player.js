@@ -41,9 +41,12 @@ const Player = ({
       (song) => song.id === currentSong.id
     );
     if (direction === "skip-forward")
-      setCurrentSong(songs[currentSongIndex + 1]);
-    else setCurrentSong(songs[currentSongIndex - 1]);
-    
+      setCurrentSong(songs[(currentSongIndex + 1) % songs.length]);
+    else {
+      if ((currentSongIndex - 1) % songs.length < 0) setCurrentSong(songs[(songs.length - 1)])
+      else setCurrentSong(songs[(currentSongIndex - 1) % songs.length]);
+    }
+
     //check if song is isPlaying
     if (isPlaying) {
       let playPromise = audioRef.current.play();
