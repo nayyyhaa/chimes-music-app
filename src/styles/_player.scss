@@ -36,6 +36,12 @@
                     height: 20px;
                     width: 16px;
                 }
+
+                &::-moz-range-thumb {
+                    -webkit-appearance: none;
+                    border: none;
+                    background: transparent;
+                }
             }
 
             .animate-track {
