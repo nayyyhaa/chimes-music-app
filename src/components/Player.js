@@ -21,8 +21,8 @@ const Player = ({ isPlaying, setIsPlaying, currentSong }) => {
   };
 
   const timeUpdateHandler = (e) => {
-    let current = e.target.currentTime.toFixed(2);
-    let duration = e.target.duration.toFixed(2);
+    let current = e.target.currentTime;
+    let duration = e.target.duration;
     setSongInfo({ ...songInfo, currentTime: current, duration });
   };
 

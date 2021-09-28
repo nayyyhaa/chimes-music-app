@@ -3,6 +3,8 @@
 ## Components:
 1) Song - contains whole song player componenets - contains: song, name, artist & the picture
 2) Player - contains play, pause, skip options
+3) Library - side library with all songs
+4) LibrarySong - seperate component for each song in library.
 
 **icons**
 Added Font awesome package.
