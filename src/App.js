@@ -45,7 +45,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className={`app-container ${isLibraryActive? "library-active": ""}`}>
       <Nav
         isLibraryActive={isLibraryActive}
         setLibraryActive={setLibraryActive}
