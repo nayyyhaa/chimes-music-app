@@ -1,0 +1,14 @@
+footer {
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+        font-size: 0.75rem;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
