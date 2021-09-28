@@ -26,13 +26,22 @@ function App() {
     let animationPercentage = Math.round(
       (Math.round(current) * 100) / Math.round(duration)
     );
-    
+
     setSongInfo({
       ...songInfo,
       currentTime: current,
       duration,
       animationPercentage,
     });
+  };
+
+  const skipSongHandler = async () => {
+    let currentSongIndex = songs.findIndex(
+      (song) => song.id === currentSong.id
+    );
+    await setCurrentSong(songs[(currentSongIndex + 1) % songs.length]);
+    //check if song is isPlaying
+    if (isPlaying) audioRef.current.play();
   };
 
   return (
@@ -64,6 +73,7 @@ function App() {
       />
       <Footer />
       <audio
+        onEnded={skipSongHandler}
         onTimeUpdate={timeUpdateHandler}
         onLoadedMetadata={timeUpdateHandler}
         ref={audioRef}
