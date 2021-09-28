@@ -15,7 +15,6 @@ const Player = ({
   songInfo,
   setSongInfo,
 }) => {
-
   const playPauseSongHandler = () => {
     if (isPlaying) audioRef.current.pause();
     else audioRef.current.play();
@@ -23,6 +22,7 @@ const Player = ({
   };
 
   const getTimeFormat = (time) => {
+    if(!time) return "0:00"
     return (
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
     );
@@ -35,12 +35,12 @@ const Player = ({
   };
 
   return (
-    <div class="player-container">
+    <div className="player-container">
       <div className="time-slider-control">
         <p>{getTimeFormat(songInfo.currentTime)}</p>
         <input
           min={0}
-          max={songInfo.duration}
+          max={songInfo.duration || 0}
           value={songInfo.currentTime}
           onChange={dragRangeHandler}
           type="range"
