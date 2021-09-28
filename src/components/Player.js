@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -7,23 +7,19 @@ import {
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Player = ({ isPlaying, setIsPlaying, currentSong }) => {
-  let [songInfo, setSongInfo] = useState({
-    currentTime: 0,
-    duration: 0,
-  });
-  let audioRef = useRef(null);
+const Player = ({
+  isPlaying,
+  setIsPlaying,
+  currentSong,
+  audioRef,
+  songInfo,
+  setSongInfo,
+}) => {
 
   const playPauseSongHandler = () => {
     if (isPlaying) audioRef.current.pause();
     else audioRef.current.play();
     setIsPlaying(!isPlaying);
-  };
-
-  const timeUpdateHandler = (e) => {
-    let current = e.target.currentTime;
-    let duration = e.target.duration;
-    setSongInfo({ ...songInfo, currentTime: current, duration });
   };
 
   const getTimeFormat = (time) => {
@@ -65,12 +61,6 @@ const Player = ({ isPlaying, setIsPlaying, currentSong }) => {
           size="2x"
         />
       </div>
-      <audio
-        onTimeUpdate={timeUpdateHandler}
-        onLoadedMetadata={timeUpdateHandler}
-        ref={audioRef}
-        src={currentSong.audio}
-      ></audio>
     </div>
   );
 };
