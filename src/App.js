@@ -35,17 +35,27 @@ function App() {
     });
   };
 
+  /*change lib active*/
+  const setLibrarySongActive = (nextPrevSong) => {
+    const currentSongActive = songs.map((el) => {
+      if (el.id === nextPrevSong.id) return { ...el, active: true };
+      else return { ...el, active: false };
+    });
+    setSongs(currentSongActive);
+  };
+
   const skipSongHandler = async () => {
     let currentSongIndex = songs.findIndex(
       (song) => song.id === currentSong.id
     );
     await setCurrentSong(songs[(currentSongIndex + 1) % songs.length]);
+    setLibrarySongActive(songs[(currentSongIndex + 1) % songs.length]);
     //check if song is isPlaying
     if (isPlaying) audioRef.current.play();
   };
 
   return (
-    <div className={`app-container ${isLibraryActive? "library-active": ""}`}>
+    <div className={`app-container ${isLibraryActive ? "library-active" : ""}`}>
       <Nav
         isLibraryActive={isLibraryActive}
         setLibraryActive={setLibraryActive}
@@ -61,6 +71,7 @@ function App() {
         setCurrentSong={setCurrentSong}
         songs={songs}
         setSongs={setSongs}
+        setLibrarySongActive={setLibrarySongActive}
       />
       <Library
         audioRef={audioRef}

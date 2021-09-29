@@ -17,18 +17,11 @@ const Player = ({
   songs,
   setSongInfo,
   setSongs,
+  setLibrarySongActive,
 }) => {
   /*track animation style*/
   const trackAnimationStyle = {
     transform: `translateX(${songInfo.animationPercentage}%)`,
-  };
-  /*change lib active*/
-  const setLibraryActive = (nextPrevSong) => {
-    const currentSongActive = songs.map((el) => {
-      if (el.id === nextPrevSong.id) return { ...el, active: true };
-      else return { ...el, active: false };
-    });
-    setSongs(currentSongActive);
   };
 
   const playPauseSongHandler = () => {
@@ -56,14 +49,14 @@ const Player = ({
     );
     if (direction === "skip-forward") {
       await setCurrentSong(songs[(currentSongIndex + 1) % songs.length]);
-      setLibraryActive(songs[(currentSongIndex + 1) % songs.length]);
+      setLibrarySongActive(songs[(currentSongIndex + 1) % songs.length]);
     } else {
       if ((currentSongIndex - 1) % songs.length < 0) {
         await setCurrentSong(songs[songs.length - 1]);
-        setLibraryActive(songs[songs.length - 1]);
+        setLibrarySongActive(songs[songs.length - 1]);
       } else {
         await setCurrentSong(songs[(currentSongIndex - 1) % songs.length]);
-        setLibraryActive(songs[(currentSongIndex - 1) % songs.length]);
+        setLibrarySongActive(songs[(currentSongIndex - 1) % songs.length]);
       }
     }
 
