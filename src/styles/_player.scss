@@ -72,6 +72,16 @@
     }
 }
 
+.dark-mode {
+    .player-container {
+        .time-slider-control {
+            p {
+                color: white;
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 800px) {
     .player-container {
         .time-slider-control {

@@ -1,3 +1,9 @@
+@import "./song";
+@import "./player";
+@import "./library";
+@import "./nav";
+@import "./footer";
+
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +21,30 @@ h1, h2, h3, h4, p {
 
 h4, h5 {
     font-weight: 400;
+}
+
+.dark-mode {
+    background: linear-gradient(to right, #1e3f55, #200e25);
+    color: white;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5
+    p {
+        color: white;
+    }
+
+    button {
+        border: 2px solid white;
+        color: white;
+
+        &:hover {
+            color: rgba(75, 74, 74);
+            background: white;
+        }
+    }
 }
 
 .app-container {
@@ -36,9 +66,3 @@ h4, h5 {
         margin-left: 50%;
     }
 }
-
-@import "./song";
-@import "./player";
-@import "./library";
-@import "./nav";
-@import "./footer";

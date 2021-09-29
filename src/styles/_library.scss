@@ -85,6 +85,16 @@
     opacity: 1;
 }
 
+.dark-mode {
+    .library-container {
+        background: rgb(22, 0, 43);
+        p,
+        a {
+            color: white;
+        }
+    }
+}
+
 @media screen and (max-width: 630px) {
     .library-container {
         width: 100%;

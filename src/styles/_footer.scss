@@ -12,3 +12,11 @@ footer {
         text-decoration: none;
     }
 }
+
+.dark-mode {
+    footer {
+        p,a {
+            color: white;
+        }
+    }
+}

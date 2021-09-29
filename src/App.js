@@ -12,6 +12,7 @@ function App() {
   let [currentSong, setCurrentSong] = useState(songs[0]);
   let [isPlaying, setIsPlaying] = useState(false);
   let [isLibraryActive, setLibraryActive] = useState(false);
+  let [isDarkMode, setDarkMode] = useState(false);
   let [songInfo, setSongInfo] = useState({
     currentTime: 0,
     duration: 0,
@@ -55,10 +56,16 @@ function App() {
   };
 
   return (
-    <div className={`app-container ${isLibraryActive ? "library-active" : ""}`}>
+    <div
+      className={`app-container ${isLibraryActive ? "library-active" : ""} ${
+        isDarkMode ? "dark-mode" : ""
+      }`}
+    >
       <Nav
         isLibraryActive={isLibraryActive}
         setLibraryActive={setLibraryActive}
+        isDarkMode={isDarkMode}
+        setDarkMode={setDarkMode}
       />
       <Song currentSong={currentSong} />
       <Player
